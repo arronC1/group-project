@@ -1,0 +1,27 @@
+<div class="container" id="assignments">
+    <div class="row">
+        <div class="col-sm-4">
+            <h1 class="assignments-form-title">Add New Assignment File</h1>
+            {{#if error}}
+                <div class="alert alert-danger">
+                   There was an error handling your request. Did you fill out all fields?
+                </div>
+            {{/if}}
+            {{#if success}}
+                <div class="alert alert-danger">
+                   assignment file Added OK!
+                </div>
+            {{/if}}
+            <form class="assignments-form" action="/portal/moduleLeader/assignments/detail/{{Aid}}/upload" enctype="multipart/form-data" method="POST">
+                <div class="form-group">
+                    <label for="assignments-form-file">Choose file</label>
+                    <input class="form-control" id="assignments-form-file" type="file" name="myFile"/>
+                </div>
+                <button class="btn btn-default pull-right" type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="col-sm-4">
+            <h2/><a href='/portal/moduleLeader/assignments'>Return</a></h2>
+        </div>
+    </div>
+</div>

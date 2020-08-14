@@ -1,0 +1,20 @@
+<div class="container" id="home">
+    <div class="col-sm-8">
+        <h2>Module Leader Contact Details</h2>
+        {{#each moduleLeader}}
+            <p>Module Leader: {{this.firstname}} {{this.surname}} - {{this.email}}</p>
+        {{/each}}
+
+        <h2>Current Groups</h2>
+        <ul>
+            {{#each group}}
+                <li>{{this.name}}</li>
+            {{/each}}
+        </ul>
+
+    </div>
+
+    <aside>
+        <h3>Weekly Meeting Slot</h3>
+    </aside>
+</div>

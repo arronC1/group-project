@@ -1,0 +1,23 @@
+<div class="container" id="home">
+    {{#each details}}
+        <h1 class="article-title">Group Details - {{this.name}}</h1>
+    <div class="body">
+        Group ID: {{this.id}}<br />
+        Group Name: {{this.name}}<br />
+        Description: {{this.description}}<br />
+    {{/each}}
+
+    Supervisor:
+    {{#each supervisor}}
+        {{this.firstname}} {{this.surname}} - {{this.email}}
+    {{/each}}<br/>
+
+    Group Members:
+    <ul>
+        {{#each members}}
+            <li>{{this.firstname}} {{this.surname}} - {{this.email}}</li>
+        {{/each}}
+    </ul>
+</div>
+
+</div>

@@ -1,0 +1,34 @@
+<div class="col-md-10 col-md-offset-1">
+    <h2>Your Groups</h2>
+
+    {{#if groups}}
+    <table class="table table-ruled table-hover table-condensed" id="contribution_table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description </th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each groups}}
+        <tr>
+            <td>
+                <div class="students-title">
+                    <a href="/portal/supervisor/groups/detail/{{this.id}}">{{this.name}}</a>
+                </div>
+            </td>
+            <td>
+
+                <div class="students-message">
+                    {{this.description}}
+                </div>
+            </td>
+        </tr>
+        {{/each}}
+        </tbody>
+    </table>
+    {{else}}
+    <p>You currently have no assigned groups</p>
+    {{/if}}
+
+</div>

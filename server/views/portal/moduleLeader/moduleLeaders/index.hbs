@@ -1,0 +1,12 @@
+<div class="container" id="moduleLeader">
+    <div>
+        <img src="/images/misc/leader.jpg" alt="Leader">
+    </div>
+    <div id="textblock" class="col-sm-4">
+        <h1>Module Leader Information</h1>
+            {{#each leader}}
+            <p>{{this.firstname}} {{this.surname}}</p>
+            <p>{{this.email}}</p>
+            {{/each}}
+    </div>
+</div>

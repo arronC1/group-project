@@ -1,0 +1,30 @@
+
+<div class="container" id="home">
+    <div class="col-sm-8">
+        <h2>Current Supervisors</h2>
+        <ul>
+        {{#each supervisor}}
+            <li>{{this.firstname}} {{this.surname}} - {{this.email}}</li>
+        {{/each}}
+        </ul>
+
+        <h2>Current Clients</h2>
+        <ul>
+            {{#each client}}
+                <li>{{this.firstname}} {{this.surname}} - {{this.email}}</li>
+            {{/each}}
+        </ul>
+
+        <h2>Current Projects</h2>
+        <ul>
+            {{#each project}}
+                <li>{{this.name}}</li>
+            {{/each}}
+        </ul>
+
+    </div>
+
+    <aside>
+        <h3>Upcoming Meetings</h3>
+    </aside>
+</div>

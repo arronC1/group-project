@@ -1,0 +1,110 @@
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="page-header">
+            <h2 class="dropdown-toggle">
+                Supervisors
+            </h2>
+        </div>
+        <a data-toggle="modal" data-target="#supervisorsModal"
+           data-title="Add Supervisor"
+           data-button="Add Supervisor"
+           data-action="/portal/moduleLeader/supervisors/add">
+            <i class="glyphicon glyphicon-edit"></i>
+            Add a new supervisor
+        </a>
+        <br>
+        <br>
+        {{#if supervisorlist.length}}
+        <table class="table table-ruled table-hover table-condensed" id="supervisor_table">
+            <thead>
+            <tr>
+                <th class="tfloatright"><p>Supervisor</p></th>
+                <th class="tfloatleft"><p>Name</p></th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each supervisorlist}}
+            <tr>
+                <td>
+                    <a href="/portal/moduleLeader/supervisors/detail/{{this.id}}">
+                        {{this.firstname}}
+                        {{this.surname}}
+                    </a>
+                </td>
+                <td>
+                    <a data-toggle="modal" data-target="#supervisorsModal"
+                       data-title="Edit Supervisor"
+                       data-button="Update Supervisor"
+                       data-action="/portal/moduleLeader/supervisors/edit/{{this.id}}"
+                       data-firstname="{{this.firstname}}"
+                       data-surname="{{this.surname}}"
+                       data-email="{{this.email}}">
+                        <i class="glyphicon glyphicon-edit"></i>
+                        Edit
+                    </a>
+
+                    <a data-toggle="modal" data-target="#supervisorsModal"
+                       data-title="Delete Supervisor"
+                       data-button="Delete Supervisor"
+                       data-action="/portal/moduleLeader/supervisors/delete/{{this.id}}"
+                       data-firstname="{{this.firstname}}"
+                       data-surname="{{this.surname}}"
+                       data-email="{{this.email}}">
+                        <i class="glyphicon glyphicon-trash"></i>
+                        Delete
+                    </a>
+                </td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+        {{else}}
+        <p>
+            No supervisors have been added yet.
+        </p>
+        {{/if}}
+    </div>
+</div>
+
+
+<div id="supervisorsModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="param-title">
+                    None
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <form id="param-form" action="#" method="POST">
+                            <div class="form-group">
+                                <label for="param-firstname">First Name</label>
+                                <input class="form-control" type="text" id="param-firstname" name="supfirstname"
+                                       placeholder="Enter First Name" required autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label for="param-surname">Surname</label>
+                                <input class="form-control" type="text" id="param-surname" name="supsurname"
+                                       placeholder="Enter Surname" required autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label for="param-email">Email</label>
+                                <input class="form-control" type="email" id="param-email" name="semail"
+                                       placeholder="Enter Email" required autofocus>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" id="param-button" form="param-form"></button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+

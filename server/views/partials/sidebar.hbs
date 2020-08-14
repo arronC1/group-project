@@ -1,0 +1,22 @@
+<aside class="col-sm-4">
+    <article class="sidebar">
+        <h1 class="sidebar-title">Project Groups</h1>
+        {{#if groupNames.length}}
+            <ul class="sidebar-body">
+                {{#each groupNames}}
+                    <li>{{this.name}}</li>
+                {{/each}}
+            </ul>
+        {{else}}
+            No Groups so far!
+        {{/if}}
+        <h1 class="sidebar-title">Useful Links</h1>
+        <ul class="sidebar-body">
+            <li><a href="https://intranet.cardiff.ac.uk/">Cardiff University Intranet</a> </li>
+            <li><a href="https://sims.cf.ac.uk/signon/index.jsp?s=1">Cardiff SIMS</a> </li>
+            <li><a href="https://login.cardiff.ac.uk/nidp/idff/sso?id=cfs2generic&sid=1&option=credential&sid=1&target=https%3A%2F%2Flogin.cardiff.ac.uk%2FLAGBroker%3F%2522https%3A%2F%2Fidp.cf.ac.uk%2Fidp%2Fprofile%2FSAML2%2FPOST%2FSSO%2522">Learning Central</a> </li>
+        </ul>
+        </article>
+    <!-- article-->
+    <article class="sidebar"></article>
+</aside>

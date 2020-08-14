@@ -1,0 +1,47 @@
+<div class="col-md-10 col-md-offset-1">
+    <div class="col-sm-8">
+    <h2>Group Details</h2>
+        {{#each details}}
+        <p>Group: {{this.name}}</p>
+        {{/each}}
+        {{#each supervisor}}
+        <p>Supervisor: {{this.firstname}} {{this.surname}} - {{this.email}}</p>
+        {{/each}}
+        {{#each client}}
+        <p>Client: {{this.firstname}} {{this.surname}} - {{this.email}} </p>
+        {{/each}}
+        {{#each moduleLeader}}
+        <p>Module Leader: {{this.firstname}} {{this.surname}} - {{this.email}}</p>
+        {{/each}}
+    <h2>Group Members</h2>
+    {{#if groupMembers.length}}
+    <div class="col-sm-8">
+        <table class="table table-ruled table-hover table-condensed" id="team_members_table">
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Email </th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each groupMembers}}
+                <tr>
+                    <td>{{firstname}} {{surname}}</td>
+                    <td>{{email}}</td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    {{else}}
+        <p>
+            No Teammembers
+        </p>
+    {{/if}}
+    </div>
+</div>
+    <aside>
+        <h3>Supervised Meeting Timeslot</h3>
+
+        <h3>Upcoming Meetings</h3>
+    </aside>
+</div>

@@ -1,0 +1,63 @@
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="page-header">
+            <h2 class="dropdown-toggle">
+                Student Details
+            </h2>
+            <h4>
+                Name: {{details.firstname}} {{details.surname}}
+            </h4>
+            <h4>
+                Number: {{details.student_number}}
+            </h4>
+            <h4>
+                Email: {{details.email}}
+            </h4>
+        </div>
+
+        <table class="table table-ruled table-hover table-condensed" id="supervisor_groups">
+            <thead>
+            <tr>
+                <th>Group Name</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#if_compare details.projectGroupId '!=' null}}
+            <tr>
+                <td>
+                    <a href="/portal/moduleLeader/groups/detail/{{details.projectGroupId}}">
+                        {{group.name}}
+                    </a>
+                </td>
+                <td>
+                    <a href="/portal/moduleLeader/students/{{details.id}}/removeGroup/{{details.projectGroupId}}">
+                        <i class="glyphicon glyphicon-trash"></i>
+                        Remove Group
+                    </a>
+                </td>
+            </tr>
+
+            {{/if_compare}}
+            {{#if_compare details.projectGroupId '==' null}}
+            {{#each allGroups}}
+            <tr>
+                <td>
+                    <a href="/portal/moduleLeader/groups/detail/{{this.id}}">
+                        {{this.name}}
+                    </a>
+                </td>
+                <td>
+                    <a href="/portal/moduleLeader/students/{{../details.id}}/addGroup/{{this.id}}">
+                        <i class="glyphicon glyphicon-edit"></i>
+                        Join Group
+                    </a>
+                </td>
+            </tr>
+            {{/each}}
+            {{/if_compare}}
+            </tbody>
+        </table>
+
+    </div>
+</div>

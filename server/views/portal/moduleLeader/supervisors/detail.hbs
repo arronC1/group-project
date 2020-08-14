@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="page-header">
+            <h2 class="dropdown-toggle">
+                Supervisor Details
+            </h2>
+            <h4>
+                Name: {{details.firstname}} {{details.surname}}
+            </h4>
+            <h4>
+                Email: {{details.email}}
+            </h4>
+        </div>
+
+        <table class="table table-ruled table-hover table-condensed" id="supervisor_groups">
+            <thead>
+            <tr>
+                <th>Group Name</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each groups}}
+            <tr>
+                <td>
+                    <a href="/portal/moduleLeader/groups/detail/{{this.id}}">
+                        {{this.name}}
+                    </a>
+                </td>
+                <td>
+                    <a href="/portal/moduleLeader/supervisors/{{../details.id}}/removeGroup/{{this.id}}">
+                        <i class="glyphicon glyphicon-trash"></i>
+                        Remove Group
+                    </a>
+                </td>
+            </tr>
+            {{/each}}
+            {{#each noGroups}}
+            <tr>
+                <td>
+                    <a href="/portal/moduleLeader/groups/detail/{{this.id}}">
+                        {{this.name}}
+                    </a>
+                </td>
+                <td>
+                    <a href="/portal/moduleLeader/supervisors/{{../details.id}}/addGroup/{{this.id}}">
+                        <i class="glyphicon glyphicon-edit"></i>
+                        Supervise Group
+                    </a>
+                </td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+
+    </div>
+</div>

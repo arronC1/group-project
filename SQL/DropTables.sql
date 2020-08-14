@@ -1,0 +1,15 @@
+drop table if exists "project_assignments" cascade;
+drop table if exists "studentfiles" cascade;
+drop table if exists "assignments" cascade;
+drop table if exists "supervisors" cascade;
+drop table if exists "projects" cascade;
+drop table if exists "clients" cascade;
+drop table if exists "students" cascade;
+drop table if exists "contributions" cascade;
+drop table if exists "users" cascade;
+drop table if exists "messages" cascade;
+drop table if exists "project_proposals" cascade;
+drop table if exists "module_leaders" cascade;
+drop table if exists "proposal_reviews" cascade;
+drop table if exists "project_groups" cascade;
+drop table if exists "submissions" cascade;

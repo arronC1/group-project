@@ -1,0 +1,49 @@
+<div class="row" id="assignments">
+    <div class="col-md-10 col-md-offset-1">
+    <div class="page-header">
+        <h4>
+            Assignment Details: {{details.title}}
+        </h4>
+        <div class="body">
+            Description: {{details.description}}<br />
+            Submission Date: {{details.subdate}}<br />
+            Maximum Mark: {{details.maxmark}}<br />
+            Group Assignment: {{details.group_assignment}}<br />
+            <a href="/portal/student/coursework/detail/{{details.id}}/upload">
+                <i class="glyphicon glyphicon-edit"></i>
+                Upload File
+            </a>
+        </div>
+    </div>
+        <table class="table table-ruled table-hover table-condensed" id="submitted_files">
+            <thead>
+            <tr>
+                <th>Submitted Files</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each submissions}}
+                <tr>
+                    <td>
+                        <a href="/portal/student/coursework/detail/{{this.dataValues.id}}/download/{{this.dataValues.file}}">
+                            {{this.dataValues.file}}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/portal/student/coursework/detail/{{../details.id}}/delete/{{this.dataValues.id}}/{{this.dataValues.file}}">
+                            <i class="glyphicon glyphicon-edit"></i>
+                            Delete File
+                        </a>
+                        <a href="/portal/student/coursework/detail/{{this.dataValues.id}}/download/{{this.dataValues.file}}">
+                            <i class="glyphicon glyphicon-edit"></i>
+                            Download File
+                        </a>
+                    </td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+</div>

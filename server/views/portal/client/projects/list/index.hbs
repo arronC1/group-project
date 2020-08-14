@@ -1,0 +1,45 @@
+<div class="col-md-10 col-md-offset-1">
+    <h2 class="dropdown-toggle">
+        Projects
+    </h2>
+
+    {{#if projectsList.length}}
+    <table class="table table-ruled table-hover table-condensed" id="project_table">
+        <thead>
+            <tr>
+                <th>Project Name</th>
+                <th>Proposal Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each projectsList}}
+            <tr>
+                <td>
+                    <a href="/portal/client/projects/show/{{this.id}}">
+                        {{this.name}}
+                    </a>
+                </td>
+                <td>
+                    {{#if_compare this.status '===' 'R'}}
+                    Requires Proposal
+                    {{/if_compare}}
+                    {{#if_compare this.status '===' 'A'}}
+                    Proposal Accepted
+                    {{/if_compare}}
+                    {{#if_compare this.status '===' 'P'}}
+                    Awaiting Review
+                    {{/if_compare}}
+                    {{#if_compare this.status '===' 'C'}}
+                    Amendments Required
+                    {{/if_compare}}
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    {{else}}
+    <p>
+        No projects were found.
+    </p>
+    {{/if}}
+</div>

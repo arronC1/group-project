@@ -1,0 +1,77 @@
+<div class="row" id="assignments">
+    <div class="col-md-10 col-md-offset-1">
+    <div class="page-header">
+        <h2 class="dropdown-toggle">
+            Assignment Details
+        </h2>
+        <h4>
+            Title: {{details.title}}
+        </h4>
+        <div class="body">
+            File:
+            {{#if details.file}}
+                {{details.file}}
+                <a href="/portal/moduleLeader/assignments/detail/{{details.id}}/upload">
+                    <i class="glyphicon glyphicon-edit"></i>
+                    Replace File
+                </a>
+                <a href="/portal/moduleLeader/assignments/detail/{{details.id}}/download/{{details.file}}">
+                    <i class="glyphicon glyphicon-edit"></i>
+                    Download File
+                </a>
+            {{else}}
+                <a href="/portal/moduleLeader/assignments/detail/{{details.id}}/upload">
+                    <i class="glyphicon glyphicon-edit"></i>
+                    Upload File
+                </a>
+            {{/if}}
+            <br/>
+            Description: {{details.description}}<br />
+            Submission Date: {{details.subdate}}<br />
+            Maximum Mark: {{details.maxmark}}<br />
+            Group Assignment: {{details.group_assignment}}<br />
+        </div>
+    </div>
+        <table class="table table-ruled table-hover table-condensed" id="assignment_projects">
+            <thead>
+            <tr>
+                <th>Project Name</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each assignedProjects}}
+                <tr>
+                    <td>
+                        <a href="/portal/moduleLeader/projects/show/{{this.dataValues.id}}">
+                            {{this.dataValues.name}}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/portal/moduleLeader/assignments/{{../details.id}}/removeProject/{{this.dataValues.id}}">
+                            <i class="glyphicon glyphicon-trash"></i>
+                            Remove From Project
+                        </a>
+                    </td>
+                </tr>
+            {{/each}}
+            {{#each noProjects}}
+                <tr>
+                    <td>
+                        <a href="/portal/moduleLeader/projects/show/{{this.id}}">
+                            {{this.name}}
+                        </a>
+                    </td>
+                    <td>
+                        <a href="/portal/moduleLeader/assignments/{{../details.id}}/addProject/{{this.id}}">
+                            <i class="glyphicon glyphicon-edit"></i>
+                            Add To Project
+                        </a>
+                    </td>
+                </tr>
+            {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+</div>

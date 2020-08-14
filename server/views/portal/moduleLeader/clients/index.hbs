@@ -1,0 +1,109 @@
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="page-header">
+            <h2 class="dropdown-toggle">
+                Clients
+            </h2>
+        </div>
+        <a data-toggle="modal" data-target="#clientsModal"
+           data-title="Add Client"
+           data-button="Add Client"
+           data-action="/portal/moduleLeader/clients/add">
+            <i class="glyphicon glyphicon-edit"></i>
+            Add a new Client
+        </a>
+        <br>
+        <br>
+        {{#if clientlist.length}}
+            <table class="table table-ruled table-hover table-condensed" id="client_table">
+                <thead>
+                <tr>
+                    <th class="tfloatright"><p>Client</p></th>
+                    <th class="tfloatleft"><p>Name</p></th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each clientlist}}
+                    <tr>
+                        <td>
+                            <a href="/portal/moduleLeader/clients/detail/{{this.id}}">
+                                {{this.firstname}}
+                                {{this.surname}}
+                            </a>
+                        </td>
+                        <td>
+                            <a data-toggle="modal" data-target="#clientsModal"
+                               data-title="Edit Client"
+                               data-button="Update Client"
+                               data-action="/portal/moduleLeader/clients/edit/{{this.id}}"
+                               data-firstname="{{this.firstname}}"
+                               data-surname="{{this.surname}}"
+                               data-email="{{this.email}}">
+                                <i class="glyphicon glyphicon-edit"></i>
+                                Edit
+                            </a>
+
+                            <a data-toggle="modal" data-target="#clientsModal"
+                               data-title="Delete Client"
+                               data-button="Delete Client"
+                               data-action="/portal/moduleLeader/clients/delete/{{this.id}}"
+                               data-firstname="{{this.firstname}}"
+                               data-surname="{{this.surname}}"
+                               data-email="{{this.email}}">
+                                <i class="glyphicon glyphicon-trash"></i>
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        {{else}}
+            <p>
+                No Clients have been added yet.
+            </p>
+        {{/if}}
+    </div>
+</div>
+
+
+<div id="clientsModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="param-title">
+                    None
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <form id="param-form" action="#" method="POST">
+                            <div class="form-group">
+                                <label for="param-firstname">First Name</label>
+                                <input class="form-control" type="text" id="param-firstname" name="clfirstname"
+                                       placeholder="Enter First Name" required autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label for="param-surname">Surname</label>
+                                <input class="form-control" type="text" id="param-surname" name="clsurname"
+                                       placeholder="Enter Surname" required autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label for="param-email">Email</label>
+                                <input class="form-control" type="email" id="param-email" name="clemail"
+                                       placeholder="Enter Email" required autofocus>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" id="param-button" form="param-form"></button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

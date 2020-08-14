@@ -1,0 +1,128 @@
+<header>
+    <div class="jumbotron hidden-xs"></div>
+    <!-- jumbotron-->
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a id="brand" class="navbar-brand" href="/">{{title}}</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <!-- If theres a user logged in -->
+                {{#if user}}
+                <ul class="nav navbar-nav navbar-left">
+                    <li>
+                        <div class="btn-group">
+                            <button id="menu-toggle" type="button" class="btn btn-default dropdown-toggle navbar-toggle"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <!-- Module leader nav links -->
+                                {{#if_compare user.user_type '===' 'MLE'}}
+                                {{> nav/nav-mle}}
+                                <!-- Student nav links -->
+                                {{else if_compare user.user_type '===' 'STU'}}
+                                {{> nav/nav-stu}}
+                                <!-- Supervisor nav links -->
+                                {{else if_compare user.user_type '===' 'SUP'}}
+                                {{> nav/nav-sup}}
+                                <!-- Client nav links -->
+                                {{else if_compare user.user_type '===' 'CLI'}}
+                                {{> nav/nav-cli}}
+                                {{/if_compare}}
+                            </ul>
+                        </div>
+                    </li>
+                    {{#if backButton}}
+                    <li>
+                        <a href="{{backButton}}" role="button" >
+                            <span class="glyphicon glyphicon-arrow-left"></span>
+                        </a>
+                    </li>
+                    {{/if}}
+                    {{#if homeButton}}
+                    <li>
+                        <a href="{{homeButton}}" role="button" >
+                            <span class="glyphicon glyphicon-home"></span>
+                        </a>
+                    </li>
+                    {{/if}}
+                </ul>
+                {{/if}}
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- If theres a user logged in -->
+                    {{#if user}}
+                    <!-- Dropdown (same for all users) -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">
+                            <span class="glyphicon glyphicon-user"></span>
+                            {{user.username}}
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Profile</a></li>
+                            <li><a data-toggle="modal" data-target="#changePasswordModal">Change Password</a></li>
+                            <li><a href="/messages">Messages</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="/login/logout">Log Out</a></li>
+                        </ul>
+                    </li>
+                    {{else}}
+                    <li><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <li><a href="/login/signup"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+                    {{/if}}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="changePasswordModal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">
+                        Change password
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2">
+                            <form id="change-password">
+                                <div class="form-group">
+                                    <label for="current-pass">Current Password</label>
+                                    <input class="form-control" type="password" id="current-pass" name="currentPass"
+                                        placeholder="Please enter your current password" required autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <label for="new-pass">New Password</label>
+                                    <input class="form-control" type="password" id="new-pass" name="newPass"
+                                        placeholder="Please enter your new password" required autofocus>
+                                </div>
+                                <div class="form-group">
+                                    <label for="conf-pass">Conifrm New Password</label>
+                                    <input class="form-control" type="password" id="conf-pass" name="confPass"
+                                        placeholder="Please re-enter your new password" required autofocus>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="changePasswordSubmit" type="submit" class="btn btn-primary" form="change-password">Save &amp; Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,134 @@
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        {{#if_compare page '!=' 'assignments'}}
+            <h3>If Compare Helper works :)</h3>
+        {{/if_compare}}
+        <div class="page-header">
+            <h2 class="dropdown-toggle">
+                Assignments List
+            </h2>
+        </div>
+        <a data-toggle="modal" data-target="#assignmentsModal"
+           data-title="Add Assignment"
+           data-button="Add Assignment"
+           data-action="/portal/moduleLeader/assignments/add">
+            <i class="glyphicon glyphicon-edit"></i>
+            Add a Assignment
+        </a>
+        <br>
+        <br>
+        {{#if assignmentslist.length}}
+            <table class="table table-ruled table-hover table-condensed" id="assignment_table">
+                <thead>
+                <tr>
+                    <th>Assignment Name</th>
+                    <th class="col-md-6">Due</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each assignmentslist}}
+                    <tr>
+                        <td>
+                            <a href="/portal/moduleLeader/assignments/detail/{{this.id}}">
+                                {{this.id}} : {{this.title}}
+                            </a>
+                        </td>
+                        <td id="datecolumn">{{this.subdate}}</td>
+                        <td>
+                            <a data-toggle="modal" data-target="#assignmentsModal"
+                               data-title="Edit Assignment"
+                               data-button="Update Assignment"
+                               data-action="/portal/moduleLeader/assignments/edit/{{this.id}}"
+                               data-name="{{this.title}}"
+                               data-subdate="{{this.subdate}}"
+                               data-maxmark="{{this.maxmark}}"
+                               data-groupassignment="{{this.group_assignment}}"
+                               data-description="{{this.description}}"
+                               data-file="{{this.file}}">
+                                <i class="glyphicon glyphicon-edit"></i>
+                                Edit
+                            </a>
+
+                            <a data-toggle="modal" data-target="#assignmentsModal"
+                               data-title="Delete Assignment"
+                               data-button="Delete Assignment"
+                               data-action="/portal/moduleLeader/assignments/delete/{{this.id}}"
+                               data-name="{{this.title}}"
+                               data-subdate="{{this.subdate}}"
+                               data-maxmark="{{this.maxmark}}"
+                               data-groupassignment="{{this.group_assignment}}"
+                               data-description="{{this.description}}"
+                               data-file="{{this.file}}">
+                                <i class="glyphicon glyphicon-trash"></i>
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        {{else}}
+            <p>
+                No assignments have been added yet.
+            </p>
+        {{/if}}
+    </div>
+</div>
+
+<div id="assignmentsModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="param-title">
+                    None
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <form id="param-form" action="#" method="POST">
+                            <div class="form-group">
+                                <label for="param-name">Title</label>
+                                <input class="form-control" type="text" id="param-name" name="title"
+                                       placeholder="Enter Assignment Title" required autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label for="param-subdate">Submission Date</label>
+                                <input class="form-control" type="date" id="param-subdate" name="subdate"
+                                       placeholder="E.g DD/MM/YYYY" required autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label for="param-maxmark">Maximum Mark Possible</label>
+                                <input class="form-control" type="number" id="param-maxmark" name="maxmark"
+                                       placeholder="E.g 15" required autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label for="param-groupassignment">Group Assignment:</label>
+                                <select class="form-control" id="param-groupassignment" name="groupAssignment" required>
+                                    <option value="1">True</option>
+                                    <option value="0">False</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="param-description">Description</label>
+                                <textarea class="form-control" id="param-description" type="text" placeholder="Enter a brief description of the assignment." rows="6" name="description"></textarea>
+                            </div>
+                            <!--<div class="form-group">-->
+                                <!--<label for="param-file">Choose file</label>-->
+                                <!--<input class="form-control" id="param-file" type="file" name="myFile"/>-->
+                            <!--</div>-->
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" id="param-button" form="param-form"></button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+

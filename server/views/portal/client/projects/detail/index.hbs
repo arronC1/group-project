@@ -1,0 +1,124 @@
+
+<div class="col-md-10 col-md-offset-1">
+    <h2 class="dropdown-toggle">
+        {{projectDetails.name}}
+    </h2>
+
+    {{#checkIf projectDetails.status '===' 'R' '||' projectDetails.status '===' 'C'}}
+        <a data-toggle="modal" data-target="#addProposalModal">
+            <i class="glyphicon glyphicon-edit"></i>
+            {{#if_compare projectDetails.status '===' 'R'}}
+                Submit project proposal
+            {{/if_compare}}
+            {{#if_compare projectDetails.status '===' 'C'}}
+                Submit amended proposal
+            {{/if_compare}}
+        </a>
+    {{/checkIf}}
+    {{#if currentProposal}}
+        <h1>
+            Current proposal
+        </h1>
+        <div class="well">
+            <p>
+                Status:
+                {{#if_compare projectDetails.status '===' 'R'}}
+                Requires Proposal
+                {{/if_compare}}
+                {{#if_compare projectDetails.status '===' 'A'}}
+                Proposal Accepted
+                {{/if_compare}}
+                {{#if_compare projectDetails.status '===' 'P'}}
+                Awaiting Review
+                {{/if_compare}}
+                {{#if_compare projectDetails.status '===' 'C'}}
+                Amendments Required
+                {{/if_compare}}
+            </p>
+            <p>
+                Submission date: {{currentProposal.createdAt}}
+            </p>
+            <p>
+            <p>
+                Brief: {{currentProposal.brief}}
+            </p>
+            {{#checkIf projectDetails.status '===' 'A' '||' projectDetails.status '===' 'C'}}
+                <p>
+                    Review date: {{currentProposal.proposal_review.createdAt}}
+                </p>
+                <p>
+                    Reviewed By:
+                    {{currentProposal.proposal_review.module_leader.firstname}}
+                    {{currentProposal.proposal_review.module_leader.surname}}
+                </p>
+                <p>
+                    Review feedback: {{currentProposal.proposal_review.comment}}
+                </p>
+            {{/checkIf}}
+        </div>
+    {{/if}}
+    {{#if proposalHistory.length}}
+        <h1>
+            Proposal History
+        </h1>
+        {{#each proposalHistory}}
+            <div class="well">
+                <p>
+                    Submission date: {{this.createdAt}}
+                </p>
+                <p>
+                    Brief: {{this.brief}}
+                </p>
+                <p>
+                    Review date: {{this.proposal_review.createdAt}}
+                </p>
+                <p>
+                    Reviewed By:
+                    {{this.proposal_review.module_leader.firstname}}
+                    {{this.proposal_review.module_leader.surname}}
+                </p>
+                <p>
+                    Review feedback: {{this.proposal_review.comment}}
+                </p>
+            </div>
+        {{/each}}
+    {{/if}}
+</div>
+
+
+<div id="addProposalModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">
+                    {{#if_compare projectDetails.status '===' 'R'}}
+                        Submit project proposal
+                    {{/if_compare}}
+                    {{#if_compare projectDetails.status '===' 'C'}}
+                        Submit amended proposal
+                    {{/if_compare}}
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <form id="new-proposal" action="/portal/client/projectProposal/create" method="POST">
+                            <div class="form-group">
+                                <label for="projectBrief">Project Brief</label>
+                                <textarea class="form-control" type="text" id="projectBrief" name="brief" placeholder="Project brief"
+                                    required autofocus>
+                                </textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" form="new-proposal">Save &amp; Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

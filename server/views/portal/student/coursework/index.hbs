@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="page-header">
+            <h2>
+                Coursework Assignments List
+            </h2>
+        </div>
+        {{#if assignmentslist.length}}
+            <table class="table table-ruled table-hover table-condensed" id="assignment_table">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th class="col-md-4 text-left">Assignment Title</th>
+                    <th class="col-md-4 text-left">Due Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each assignmentslist}}
+                    <tr>
+                        <td class="col-md-1">
+                                {{this.id}}
+                        </td>
+                        <td class="col-md-4 text-left">
+                            <a href="/portal/student/coursework/detail/{{this.id}}">
+                                {{this.title}}
+                            </a>
+                        </td>
+                        <td class="col-md-6 text-left">
+                                {{this.subdate}}
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        {{else}}
+            <p>
+                No assignments have been added yet.
+            </p>
+        {{/if}}
+    </div>
+</div>

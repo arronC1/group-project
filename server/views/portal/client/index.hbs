@@ -1,0 +1,27 @@
+<div class="col-md-10 col-md-offset-1">
+        <div class="col-sm-8">
+            <h2>Module Leader Contact Details</h2>
+            {{#each moduleLeader}}
+                <p>Module Leader: {{this.firstname}} {{this.surname}} - {{this.email}}</p>
+            {{/each}}
+
+            <h2>Current Groups</h2>
+            <ul>
+                {{#each group}}
+                    <li>{{this.name}}</li>
+                {{/each}}
+            </ul>
+
+            <h2>Current Projects</h2>
+            <ul>
+                {{#each project}}
+                    <li>{{this.name}}</li>
+                {{/each}}
+            </ul>
+
+        </div>
+
+        <aside>
+            <h3>Upcoming Meetings</h3>
+        </aside>
+</div>

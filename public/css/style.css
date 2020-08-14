@@ -1,0 +1,393 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:100,300);
+
+body {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  color: #C1343F;
+}
+
+p {
+  font-family: inherit;
+  font-weight: 100;
+}
+
+
+li {
+  font-family: inherit;
+  font-weight: 100;
+}
+
+
+a {
+  color: #DD4F53;
+  cursor: pointer;
+}
+
+/**  Header Navigation **/
+header .jumbotron {
+  height: 30vh;
+  margin-bottom: 0;
+  background: url(../images/misc/background.jpg) no-repeat 100% 5%;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+/**  Navbar **/
+
+header .navbar {
+  background: #d73648;
+  border-radius: 0;
+}
+
+header .navbar-default {
+  border: none;
+  border-radius: 0;
+  padding: 10px 0;
+}
+
+.navbar-inverse {
+  border: 0;
+}
+
+.navbar-collapse {
+  padding-left: 0px;
+}
+
+.navbar-brand
+{
+    position: absolute;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    margin:0 auto;
+}
+
+#brand {
+  margin-left: 0;
+}
+
+#menu-toggle {
+  float: left;
+  display: initial;
+  border-color: #FFF;
+}
+
+#menu-toggle:hover  {
+  background-color: #d73648;
+}
+
+#menu-toggle:focus  {
+  background-color: #C1343F;
+}
+
+header .navbar-brand {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.3em;
+  font-weight: 300;
+}
+
+header .navbar-inverse .navbar-brand {
+  color: white;
+}
+
+header .navbar-inverse .navbar-nav>li>a {
+  color: white;
+} 
+
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:focus, .navbar-inverse .navbar-nav>.open>a:hover {
+  background-color: #C1343F;
+}
+
+.maincontent {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.8rem;
+  line-height: 160%;
+}
+
+.sidebar {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.8rem;
+  line-height: 130%;
+}
+
+.sidebar .sidebar-title {
+  font-size: 1.5em;
+}
+
+.sidebar .sidebar-body li {
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    line-height: 160%;
+  }
+  .sidebar .sidebar-title {
+    font-size: 2em;
+  }
+}
+
+.form-control {
+  font-weight: 100;
+  font-size: 1.7rem;
+}
+
+.chat-form {
+  margin-top: 20px;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+}
+
+.jumbotron {
+  padding: 20px 0;
+  background-color: #FFEB8B;
+}
+
+/**  chat-display **/
+
+.chat-display {
+  min-height: 150px;
+  max-height: 40vh;
+  overflow: scroll;
+  font-size: 1.2em;
+}
+
+.chat-display p {
+  font-size: .9em;
+  padding: 0 10px;
+}
+
+.students, .students-form-title {
+  font-size: 2rem;
+}
+
+.students-form {
+  margin-top: 20px;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+}
+
+
+.students-title {
+  font-size: 1.2em;
+}
+
+.students-form-title {
+  font-size: 2em;
+}
+
+.students-name {
+  font-size: .9em;
+  font-weight: 100;
+}
+
+.students-contact {
+  font-size: .7em;
+  font-weight: 100;
+}
+
+.students-item {
+  border-bottom: 1px solid gray;
+  padding: 8px 0;
+}
+
+.students-item:last-of-type {
+  border-bottom: none;
+}
+
+
+/**  pixgrid **/
+
+.pixgrid {
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.pixgrid img {
+  display: block;
+  padding: 5px;
+  float: left;
+  width: 33.33%;
+  border-radius: 10px;
+}
+
+@media (min-width: 500px) and (max-width: 768px) {
+  .pixgrid img {
+    width: 20%;
+  }
+}
+
+#login p {
+  margin: 10px 0 0 0;
+}
+
+img[alt="Leader"] { 
+  margin-top: 20px;
+  height: 350px;
+  width: 320px;
+  float: left;
+}
+
+#textblock {
+  width: 800px;
+}
+
+#textblock p {
+  font-weight: bold;
+  font-family: Roboto, sans-serif;
+}
+#GroupLogWindow{
+	text-align: center;
+	margin-left: 1vw;
+	margin-right: 1vw;
+	background-color: white;
+	height: auto;
+	width:  auto;
+	box-shadow: 0px 5px 2px #d6d6d6;
+}
+
+.footer{
+  text-align: center;
+
+}
+
+.footer h6, h5 {
+  color: black;
+}
+
+.messageContainer {
+  background-color: rgba(198, 93, 93, 0.4);
+  margin: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-bottom: -15px;
+}
+
+.time-right {
+  float: right;
+  color: black;
+}
+
+.from-left {
+  float: left;
+}
+
+.message-header {
+  background-color: rgba(198, 93, 93, 0.4);
+  height: 40px;
+  margin-bottom: -15px;
+}
+
+hr {
+  height: 1px;
+  background-color: black;
+  border: 0;
+}
+
+table {
+  border-collapse: collapse;
+  width: 1150px;
+}
+
+th {
+  text-align: center;
+  padding-bottom: 10px;
+  padding-top: 10px;  
+  background-color: #C1343F;
+  Color:white;
+}
+
+td {
+  text-align: center;
+  padding-bottom: 10px;
+  padding-top: 10px;    /* 10px top & bottom padding, 0px left & right */
+  border-width: 1px 0; /*  1px top & bottom border,  0px left & right */
+  border-color: #000;
+  border-style: solid;
+  column-width: 300px;
+}
+
+td a:hover {
+  text-decoration: none;
+}
+
+tr:hover { 
+  background-color: #b5b8bc;
+}
+
+.messageRef {
+  text-decoration: none;
+  color: inherit;
+}
+
+.messageTitle {
+  font-weight: 100;
+  font-size: 1.7rem;
+  width: 150px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.messageLabels {
+  color: black;
+}
+
+.jumbotron .jumbotron {
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+textarea[name="mmessageContent"] { 
+  height: 200px;
+  cols: 70;
+  rows: 50;
+}
+
+div .jumbotron {
+  background-color: rgba(193, 52, 63, 0.6);
+  padding-bottom: 50px;
+}
+
+.titledisplay {
+  width: 280px;
+  float: left;
+  color: black;
+  margin: 0px;
+}
+
+.timedisplay {
+  float: right;
+  color: black;
+  margin: 0px;
+}
+
+.tfloatright p {
+  float: right;
+  padding-right: -2px;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.tfloatleft p {
+  float: left;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.tfloatright {
+  padding-right: 0px;
+}
+
+.tfloatleft {
+  padding-left: 5px;
+}

@@ -1,0 +1,29 @@
+<!-- Nav tabs -->
+<div class="col-md-10 col-md-offset-1">
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" >
+            <a href="/portal/supervisor/groups/detail/{{gid}}">
+                Details
+            </a>
+        </li>
+        <li role="presentation">
+            <a href="/portal/supervisor/groups/contribution/{{gid}}">
+                Contribution
+            </a>
+        </li>
+        <li role="presentation" class="active">
+            <a href="#attendance" aria-controls="attendance" role="tab" data-toggle="tab">
+                Attendance
+            </a>
+        </li>
+        <li class="pull-right">
+            <h2>Group: {{details.name}}</h2>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="attendance">
+            <p>Attendance Record</p>
+        </div>
+    </div>
+</div>

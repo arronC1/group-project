@@ -1,0 +1,14 @@
+{{#each message}}
+<div class="jumbotron">
+    <h4 class="titledisplay">From: {{this.sourceUser.username}}</h4>
+    <h4 class="timedisplay">Time: {{this.updatedAt}}</h4>
+    <br>
+    <hr>
+    <h4 class="titledisplay">Subject: {{this.messageTitle}}</h4>
+    <br>
+    <br>
+<div class="jumbotron">
+<p class="messageContent">{{this.messageContent}}</p>
+</div>
+</div>
+{{/each}}

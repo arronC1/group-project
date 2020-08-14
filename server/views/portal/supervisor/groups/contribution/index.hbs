@@ -1,0 +1,148 @@
+<!-- Nav tabs -->
+<div class="col-md-10 col-md-offset-1">
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation">
+            <a href="/portal/supervisor/groups/detail/{{details.id}}">
+                Details
+            </a>
+        </li>
+        <li role="presentation" class="active">
+            <a href="#contribution" aria-controls="contribution" role="tab" data-toggle="tab">
+                Contribution
+            </a>
+        </li>
+        <li role="presentation">
+            <a href="/portal/supervisor/groups/attendance/{{details.id}}">
+                Attendance
+            </a>
+        </li>
+        <li class="pull-right">
+            <h2>Group: {{details.name}}</h2>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="contribution">
+        <p>The average group Contribution is {{groupAvgCont}} hours</p>
+        {{#if groupLog.length}}
+
+            <div class="col-sm-4">
+                <form class="form-inline" id="cont-weeks-display" action="/portal/supervisor/groups/contribution/{{details.id}}" method="POST">
+                    <div class="form-group">
+                        <label for="selectedWeek">View Week</label>
+                        <select class="form-control" id="selectedWeek" name="selectedWeek" onchange="this.form.submit()">
+                            {{#each weekList}}
+                            {{#if_compare ../selectedWeek '==' this.week}}
+                            <option value="{{this.week}}" selected="selected">
+                                {{/if_compare}}
+                                {{#if_compare ../selectedWeek '!=' this.week}}
+                            <option value="{{this.week}}">
+                                {{/if_compare}}
+                                {{this.week}}
+                            </option>
+                            {{/each}}
+                            {{#if_compare selectedWeek '==' 0}}
+                            <option value="0" selected="selected">
+                                {{/if_compare}}
+                                {{#if_compare selectedWeek '!=' 0}}
+                            <option value="0">
+                                {{/if_compare}}
+                                ALL
+                            </option>
+                        </select>
+                    </div>
+<!--                    <button class="btn btn-default" type="submit">Submit</button>-->
+                </form>
+            </div>
+
+            <div class="col-md-10">
+                <table class="table table-ruled table-hover table-condensed" id="contribution_table">
+                    <thead>
+                        <tr>
+                            <th>Week</th>
+                            <th>Student </th>
+                            <th>Hours </th>
+                            <th>Tasks</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {{#each groupLog}}
+                        <tr>
+                            <td>{{week}}</td>
+                            <td>{{student.firstname}} {{student.surname}}</td>
+                            <td>{{hours}}</td>
+                            <td>{{tasks}}</td>
+                            <td>
+                                <a data-toggle="modal" data-target="#contributionModal"
+                                   data-title="Edit Contribution"
+                                   data-button="Update Contribution"
+                                   data-action="/portal/supervisor/groups/contribution/{{../details.id}}/edit/{{student.id}}"
+                                   data-student="{{student.email}}"
+                                   data-week="{{week}}"
+                                   data-hours="{{hours}}"
+                                   data-tasks="{{tasks}}">
+                                    <i class="glyphicon glyphicon-edit"></i>
+                                    Edit
+                                </a>
+                            </td>
+                            <td>
+                                <a data-toggle="modal" data-target="#contributionModal"
+                                   data-title="Delete Contribution"
+                                   data-button="Delete Contribution"
+                                   data-action="/portal/supervisor/groups/contribution/{{../details.id}}/delete/{{this.id}}"
+                                   data-student="{{student.email}}"
+                                   data-week="{{week}}"
+                                   data-hours="{{hours}}"
+                                   data-tasks="{{tasks}}">
+                                    <i class="glyphicon glyphicon-trash"></i>
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        {{else}}
+            <p>No Contribution recorded yet by Group</p>
+        {{/if}}
+    </div>
+</div>
+
+<div id="contributionModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="param-title">
+                    None
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <form id="param-form" action="#" method="POST">
+                            <div class="form-group">
+                                <label for="param-hours">Hours</label>
+                                <input class="form-control" id="param-hours" type="number" placeholder="Enter total hours E.g 7" name="hours" required autofocus/>
+                            </div>
+                            <div class="form-group">
+                                <label for="param-tasks">Tasks Completed</label>
+                                <textarea class="form-control" id="param-tasks" type="text" placeholder="Enter a description of the tasks you have completed" rows="6" name="tasks"></textarea>
+                            </div>
+                            <input type="hidden" name="student" id="param-student"/>
+                            <input type="hidden" name="week" id="param-week"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" id="param-button" form="param-form">Save &amp; Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

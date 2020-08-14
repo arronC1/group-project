@@ -1,0 +1,44 @@
+<div class="container">
+ <br>
+ <div class="jumbotron">
+<form class="messages-form" action="/messages" method="POST">
+ <h1 class="display-4">Send a Message</h1>
+ <h4 class="messageLabels">User:</h4><select id="skill_category" name="userid">
+     {{#each userList}}
+     <option value='{{this.id}}'>{{this.username}}</option>
+     {{/each}}
+ </select> 
+ <br>
+ <h4 class="messageLabels">Subject:</h4>
+ <input class="messageTitle" id="messages-form-messageContent" type="text" name="mmessageTitle"/>
+ <br>
+ <br>
+ <textarea class="form-control" id="messages-form-messageContent" placeholder="Type Here.." name="mmessageContent"></textarea>
+ <br>
+ <button class="btn btn-default pull-right" type="submit">Submit</button>
+</form>
+ </div>
+  <h1 class="display-4">Your Messages</h1>
+  <br>
+ <div id="messages">
+     <table>
+         <thead>
+         <tr>
+             <th>Subject</th>
+             <th>From (User ID)</th>
+             <th>Date</th>
+         </tr>
+         </thead>
+         <tbody>
+    {{#each messageList}}
+        <tr>
+            <td><a class="messageRef" href="messages/detail/{{this.id}}">{{this.messageTitle}}</a></td>
+            <td><a class="messageRef" href="messages/detail/{{this.id}}" name="sourceID">{{this.sourceUserId}}</a></td>
+            <td><a class="messageRef" href="messages/detail/{{this.id}}">{{this.updatedAt}}</a></td>
+        </tr>
+    {{/each}}
+    </tbody>
+     </table>
+ </div>
+ <p>{{this.messageID}}</p>
+</div>

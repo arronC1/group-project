@@ -1,0 +1,142 @@
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <div class="page-header">
+            <h2 class="dropdown-toggle">
+                Groups
+            </h2>
+        </div>
+        <a data-toggle="modal" data-target="#groupsModal"
+           data-title="Add Group"
+           data-button="Add Group"
+           data-action="/portal/moduleLeader/groups/add">
+            <i class="glyphicon glyphicon-edit"></i>
+            Add a new Group
+        </a>
+        <a data-toggle="modal" data-target="#formModal">
+            <i class="glyphicon glyphicon-plus-sign"></i>
+            Automatically Form new Groups
+        </a>
+        <br>
+        <br>
+        {{#if grouplist.length}}
+        <table class="table table-ruled table-hover table-condensed" id="Group_table">
+            <thead>
+            <tr>
+                <th class="col-md-2">Group Name</th>
+                <th class="col-md-4">Group Description</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {{#each grouplist}}
+            <tr>
+                <td>
+                    <a href="/portal/moduleLeader/groups/detail/{{this.id}}">
+                        {{this.name}}
+                    </a>
+                </td>
+                <td>
+                        {{this.description}}
+                </td>
+                <td>
+                    <a data-toggle="modal" data-target="#groupsModal"
+                       data-title="Edit Group"
+                       data-button="Update Group"
+                       data-action="/portal/moduleLeader/groups/edit/{{this.id}}"
+                       data-name="{{this.name}}"
+                       data-description="{{this.description}}"
+                        <i class="glyphicon glyphicon-edit"></i>
+                        Edit
+                    </a>
+
+                    <a data-toggle="modal" data-target="#groupsModal"
+                       data-title="Delete Group"
+                       data-button="Delete Group"
+                       data-action="/portal/moduleLeader/groups/delete/{{this.id}}"
+                       data-name="{{this.name}}"
+                       data-description="{{this.description}}"
+                        <i class="glyphicon glyphicon-trash"></i>
+                        Delete
+                    </a>
+                </td>
+            </tr>
+            {{/each}}
+            </tbody>
+        </table>
+        {{else}}
+        <p>
+            No Groups have been added yet.
+        </p>
+        {{/if}}
+    </div>
+</div>
+
+
+<div id="groupsModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="param-title">
+                    None
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <form id="param-form" action="#" method="POST">
+                            <div class="form-group">
+                                <label for="param-name">First Name</label>
+                                <input class="form-control" type="text" id="param-name" name="pgName"
+                                       placeholder="Enter Name" required autofocus>
+                            </div>
+                            <div class="form-group">
+                                <label for="param-description">Surname</label>
+                                <textarea class="form-control" type="text" id="param-description" name="pgDescription" rows="6"
+                                          placeholder="Enter Description" required autofocus></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" id="param-button" form="param-form"></button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="formModal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="title">
+                    Please enter the amount of groups you would like to create
+                </h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <form id="form-form" action="/portal/moduleLeader/groups/form" method="POST">
+                            <div class="form-group">
+                                <label for="noOfGroups">Number of Groups</label>
+                                <input class="form-control" type="text" id="noOfGroups" name="noOfGroups"
+                                       placeholder="Enter amount of groups" required autofocus>
+                            </div>
+                            There are currently {{ungrouped.length}} students that do not have groups assigned.
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-primary" id="button" form="form-form">Form Groups</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

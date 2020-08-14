@@ -1,0 +1,29 @@
+<div class="container" id="submissions">
+    <div class="row">
+        <div class="col-sm-4">
+            <h1 class="submissions-form-title">Submit new Coursework Submission File</h1>
+            {{#if error}}
+                <div class="alert alert-danger">
+                   There was an error handling your request. Did you fill out all fields?
+                </div>
+            {{/if}}
+            {{#if success}}
+                <div class="alert alert-danger">
+                    Coursework Submission file Added OK!
+                </div>
+            {{/if}}
+            <form class="submissions-form" action="/portal/student/coursework/detail/{{Aid}}/upload" enctype="multipart/form-data" method="POST">
+                <div class="form-group">
+                    <label for="submissions-form-title">Title</label>
+                    <input class="form-control" id="submissions-form-title" type="text" name="title"/>
+                    <label for="submissions-form-file">Choose file</label>
+                    <input class="form-control" id="submissions-form-file" type="file" name="myFile"/>
+                </div>
+                <button class="btn btn-default pull-right" type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="col-sm-4">
+            <h2/><a href='/portal/student/coursework'>Return</a></h2>
+        </div>
+    </div>
+</div>
